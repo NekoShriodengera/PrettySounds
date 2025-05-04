@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@drawable/fonday">
-
+    android:background="@drawable/fonday"
+    tools:context=".MainActivity">
 
     <View
         android:id="@+id/gradientView"
@@ -30,98 +29,96 @@
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="@+id/gradientView"
         app:layout_constraintStart_toStartOf="@+id/gradientView"
-        app:layout_constraintTop_toTopOf="@+id/gradientView"
-        app:layout_constraintVertical_bias="0.222" />
-
-    <View
-        android:id="@+id/infoBoxBackground"
-        android:layout_width="400dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/rectandle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gradientView" />
-
-    <TextView
-        android:id="@+id/infoText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="Плейлист №1"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:layout_marginStart="28dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintStart_toStartOf="@+id/infoBoxBackground"
-        app:layout_constraintTop_toTopOf="@+id/infoBoxBackground"
-        app:layout_constraintBottom_toBottomOf="@+id/infoBoxBackground"
-        app:layout_constraintEnd_toStartOf="@+id/arrow" />
-
-    <ImageButton
-        android:id="@+id/arrow"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="16dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="@string/info_button_image_desc"
-        android:src="@drawable/arrow"
-        app:layout_constraintEnd_toEndOf="@+id/infoBoxBackground"
-        app:layout_constraintTop_toTopOf="@+id/infoBoxBackground"
-        app:layout_constraintBottom_toBottomOf="@+id/infoBoxBackground" />
-
-
-    <View
-        android:id="@+id/simpleRectangle"
-        android:layout_width="445dp"
-        android:layout_height="6dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="256dp"
-        android:background="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.303"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/gradientView" />
 
     <ImageButton
         android:id="@+id/themeButton"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="156dp"
+        android:layout_marginEnd="16dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/theme_toggle"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/gradientView"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cloud" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/playlistsRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clipToPadding="false"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/simpleRectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gradientView"
+        tools:listitem="@layout/item_playlist" />
+
+    <TextView
+        android:id="@+id/empty_playlists_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Створіть свій перший плейлист\nнатиснувши кнопку 'Папка'"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/playlistsRecyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/playlistsRecyclerView"
+        app:layout_constraintStart_toStartOf="@+id/playlistsRecyclerView"
+        app:layout_constraintTop_toTopOf="@+id/playlistsRecyclerView"
+        tools:visibility="visible" />
+
+    <View
+        android:id="@+id/simpleRectangle"
+        android:layout_width="0dp"
+        android:layout_height="6dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/closeButton1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/settingsButton"
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:layout_marginTop="412dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/theme_toggle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/settings" />
-
+        app:srcCompat="@drawable/settings"
+        app:layout_constraintBottom_toTopOf="@+id/simpleRectangle"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageButton
-        android:id="@+id/folderButton4"
+        android:id="@+id/closeButton1"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="280dp"
+        android:layout_marginStart="40dp"
         android:layout_marginBottom="148dp"
         android:background="@drawable/circle"
         android:contentDescription="@string/open_second_page"
-        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/folder"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/close" />
+
+    <ImageButton
+        android:id="@+id/searchButton2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginBottom="148dp"
+        android:background="@drawable/circle"
+        android:contentDescription="@string/open_second_page"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/search" />
 
     <ImageButton
         android:id="@+id/likeButton3"
@@ -134,60 +131,20 @@
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/like"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/like" />
 
     <ImageButton
-        android:id="@+id/notesButton8"
+        android:id="@+id/folderButton4"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="280dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/circle"
-        android:contentDescription="@string/open_second_page"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/notes"
-        tools:ignore="MissingConstraints" />
-
-    <ImageButton
-        android:id="@+id/galleryButton7"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="148dp"
         android:background="@drawable/circle"
         android:contentDescription="@string/open_second_page"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/gallery"
-        tools:ignore="MissingConstraints" />
-
-    <ImageButton
-        android:id="@+id/themeButton6"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/circle"
-        android:contentDescription="@string/theme_toggle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/night" />
-
-    <ImageButton
-        android:id="@+id/searchButton2"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginBottom="148dp"
-        android:background="@drawable/circle"
-        android:contentDescription="@string/open_second_page"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/search"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/folder" />
 
     <ImageButton
         android:id="@+id/cloudappButton5"
@@ -202,15 +159,40 @@
         app:srcCompat="@drawable/cloudapp" />
 
     <ImageButton
-        android:id="@+id/closeButton1"
+        android:id="@+id/themeButton6"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="148dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/circle"
+        android:contentDescription="@string/theme_toggle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/night" />
+
+    <ImageButton
+        android:id="@+id/galleryButton7"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/circle"
+        android:contentDescription="@string/open_second_page"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/gallery" />
+
+    <ImageButton
+        android:id="@+id/notesButton8"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/circle"
         android:contentDescription="@string/open_second_page"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/close" />
+        app:srcCompat="@drawable/notes" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
